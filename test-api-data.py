@@ -32,7 +32,7 @@ signal.signal(signal.SIGINT, signal_handler)
 gc = gspread.service_account(filename='service_account.json')  # Held locally
 
 # Data will be entered in this worksheet, and visualized in another one
-data_sheet = gc.open("Test API Spreadsheet").worksheet("Raw Data")
+data_sheet = gc.open("Lab Monitor Data").worksheet("Raw Data")
 
 
 while True:
