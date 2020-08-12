@@ -2,6 +2,7 @@ import signal
 import sys
 import time
 import sensor_data
+from wifi_handler import WLAN_check
 import gspread
 
 '''
@@ -37,6 +38,8 @@ data_sheet = gc.open("Lab Monitor Data").worksheet("Raw Data")
 sensor_data.connect()
 
 while True:
+    WLAN_check()
+    
     try:
         data_sheet.insert_row(sensor_data.get_data(), 2, value_input_option="USER_ENTERED")
     except:
