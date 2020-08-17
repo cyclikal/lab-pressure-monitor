@@ -4,6 +4,7 @@ import time
 import sensor_data
 import gspread
 
+
 def signal_handler(sig, frame):
     data_sheet.update('A2', data_sheet.get(
         'A2'), value_input_option="USER_ENTERED")
@@ -12,9 +13,9 @@ def signal_handler(sig, frame):
     print('Exiting script...')
     sys.exit(0)
 
+
 # IMPORTANT: the Pi service account MUST have edit access to the spreadsheet.
 # This can be done like a normal user, by sharing it with the email found in service_account.json
-
 SPREADSHEET_NAME = "Lab Monitor Data"  # Name of the spreadsheet for data to be uploaded
 SPREADSHEET_TAB = "Raw Data"  # Name of the tab for data to be dumped in
 LOOP_FREQUENCY = 30  # Seconds between each upload
