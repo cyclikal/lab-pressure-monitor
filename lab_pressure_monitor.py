@@ -2,21 +2,7 @@ import signal
 import sys
 import time
 import sensor_data
-#from wifi_handler import WLAN_check
 import gspread
-
-'''
-# Placeholder until sensors arrive, sensor_data
-def get_data():
-    lab_temp = random.uniform(20.0, 24.0)
-    lab_hum = random.uniform(40.0, 55.0)
-    glove_box_temp = random.uniform(20.0, 23.0)
-    glove_box_hum = random.uniform(15.0, 30.0)
-    # Probably in millibar/hPa, would be most logical
-    glove_box_pressure = random.uniform(1013.25, 1025.0)
-
-    return ['=TEXT(NOW(),"yyyy/mm/dd")', '=TEXT(NOW(),"hh:mm:ss")', lab_temp, '=CONVERT(C2, "C", "F")', lab_hum, glove_box_temp, '=CONVERT(F2, "C", "F")', glove_box_hum, glove_box_pressure, '=(I2-1013.25) / 2.488']
-'''
 
 def signal_handler(sig, frame):
     data_sheet.update('A2', data_sheet.get(
@@ -26,14 +12,17 @@ def signal_handler(sig, frame):
     print('Exiting script...')
     sys.exit(0)
 
+# IMPORTANT: the Pi service account MUST have edit access to the spreadsheet.
+# This can be done like a normal user, by sharing it with the email found in service_account.json
+
+SPREADSHEET_NAME = "Lab Monitor Data"  # Name of the spreadsheet for data to be uploaded
+SPREADSHEET_TAB = "Raw Data"  # Name of the tab for data to be dumped in
+LOOP_FREQUENCY = 30  # Seconds between each upload
 
 start_time = time.time()
-loop_frequency = 30  # Seconds between each upload
 signal.signal(signal.SIGINT, signal_handler)
-gc = gspread.service_account(filename='service_account.json')  # Held locally
-
-# Data will be entered in this worksheet, and visualized in another one
-data_sheet = gc.open("Lab Monitor Data").worksheet("Raw Data")
+gc = gspread.service_account(filename='service_account.json')  # Held locally, should not be shared
+data_sheet = gc.open(SPREADSHEET_NAME).worksheet(SPREADSHEET_TAB)
 
 sensor_data.connect()
 

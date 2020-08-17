@@ -1,8 +1,8 @@
-# lab-pressure-monitor
+# Lab Pressure Montiro
 A short script for a Rasperry Pi Zero-powered data logger (measuring lab temperature and humidity, and glove box temperature, humidity, and pressure).
 
 ## General Use
-This script will upload data to a Google Sheets document. The document name is currently "Lab Monitor Data" and should be shared with relevant users. Vincent and Aaron both have access to the Google API settings for the service account that runs on the Pi Zero W to upload data.
+This script will upload data to a Google Sheets document. The document name is currently "Lab Monitor Data" and should be shared with relevant users. Vincent and Aaron both have access to the Google API settings for the service account that runs on the Pi Zero W to upload data, although any Cyclikal Google user may have access (has not been verified yet).
 
 ## Setup
 ### Raspian
@@ -36,6 +36,6 @@ Check `sensor_data.py` for the DHT22 pin in case the header pins that plug into 
 ### Finally, _the actual code..._
 For this to run, the Pi will use a Google service account to edit a spreadsheet. This is easier than other ways of authenticating since the Pi can be logged in forever (a slight security risk, but much simpler). To get the `service_account.json` file needed for operation, you will need to have access to the **"Lab Monitor Data"** Google Spreadsheet, and the **"Lab Monitor Project"** API project within the Google APIs & Services webpage.
 
-Go to [this link](https://console.developers.google.com/apis/credentials?authuser=0&project=lab-monitor-project&supportedpurview=project) with a Cyclikal account to access the credentials page, click on the **"lab-monitor-account"** service account, and generate a new key with "ADD KEY" -> "Create new key" -> JSON. Then move this file into the pi's home directory. _It should be named `service_account.json`_
+Go to [this link](https://console.developers.google.com/apis/credentials?authuser=0&project=lab-monitor-project&supportedpurview=project) with a Cyclikal account to access the credentials page, click on the **"lab-monitor-account"** service account, and generate a new key with "ADD KEY" -> "Create new key" -> JSON. Then move this file into the pi's home directory. _It should be named `service_account.json`._ Before doing anything else, verify that the email listed in `service_account.json` has been given edit access to the data spreadsheet. If not, just give it access as if you were doing it for a human user.
 
 Finally, set up `lab-pressure-monitor.py` to run on boot by **TODO: FINISH THIS**

@@ -10,6 +10,9 @@ DHT_PIN = 4  # MAKE SURE THIS IS CORRECT
 
 def connect():
     '''
+    Connects to the BME280 module over the default i2c address (0x77)
+    '''
+    '''
     sensor = qwiic_bme280.QwiicBme280()
     sensor.set_pressure_oversample(4)
     sensor.set_tempature_oversample(2)  # Yes it's misspelled, the library has an error lol
@@ -20,6 +23,9 @@ def connect():
 
 
 def get_data():
+    '''
+    Gathers data from the BME280 sensor and the DHT22 and reports them in the spreadsheet format (a list with date, time, and some Google Sheets formulas)
+    '''
     '''
     sensor.set_mode(MODE_NORMAL)
 
