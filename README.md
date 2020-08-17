@@ -24,7 +24,7 @@ Since the goal of this project is to run headless (continuously) for months at a
 - Do `sudo chmod +x check_wifi.sh` to make the script executable
 - Add to crontab with `crontab -e`, then add `*/10 * * * * sudo /home/pi/check_wifi.sh` to the end of the file. This will run the script every 10 minutes to check the local connection, and restarts wlan0 if it's down. Obviously, if the Pi keeps disconnecting, there's probably a bigger problem.
 
-### Wiring
+### Wiring and Physical Setup
 This should already be done (unless it's been unplugged and moved or something), but the Pi should be connected to a 3D print witht the DHT22 sensor on it as well. That print clips on a wire breakout box that plugs into the back of the glove box, which runs inside the box to the Sparkfun BME280 board (small red PCB) on its own 3D printed bracket.
 
 Check `sensor_data.py` for the DHT22 pin in case the header pins that plug into the Pi Zero have been broken. Otherwise, that header should have five connections ([pinout.xyz](https://www.pinout.xyz) is helpful here):
@@ -32,6 +32,8 @@ Check `sensor_data.py` for the DHT22 pin in case the header pins that plug into 
 - I2C for BME280 pressure sensor (yellow heatshrink)
 - GND (black heatshrink)
 - DHT22 pin (green heatshrink)
+
+To find the 3D printed parts used for this, go to the cyclikal-cad-files repository and search for the relevant keywords (file names should be something like "pi_zero_enclosure" and "pressure_sensor_enclosure")
 
 ### Finally, _the actual code..._
 For this to run, the Pi will use a Google service account to edit a spreadsheet. This is easier than other ways of authenticating since the Pi can be logged in forever (a slight security risk, but much simpler). To get the `service_account.json` file needed for operation, you will need to have access to the **"Lab Monitor Data"** Google Spreadsheet, and the **"Lab Monitor Project"** API project within the Google APIs & Services webpage.
