@@ -1,4 +1,4 @@
-# Lab Pressure Montiro
+# Lab Pressure Monitor
 A short script for a Rasperry Pi Zero-powered data logger (measuring lab temperature and humidity, and glove box temperature, humidity, and pressure).
 
 ## General Use
