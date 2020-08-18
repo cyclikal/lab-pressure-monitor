@@ -22,7 +22,7 @@ Finally, follow these steps for the code:
 Since the goal of this project is to run headless (continuously) for months at a time, it will be useful to have a script in place to ping a local IP and ensure that there is a network connection. To do this, follow these steps:
 - Change the `GATEWAY` in `check_wifi.sh` to a local IP to ping (router maybe?) to check the WiFi connection (10.128.128.128 works for UEL Tenant WiFi)
 - Do `sudo chmod +x check_wifi.sh` to make the script executable
-- Add to crontab with `crontab -e`, then add `*/10 * * * * sudo /home/pi/check_wifi.sh` to the end of the file. This will run the script every 10 minutes to check the local connection, and restarts wlan0 if it's down. Obviously, if the Pi keeps disconnecting, there's probably a bigger problem.
+- Add to crontab with `crontab -e`, then add `*/10 * * * * sudo sh /home/pi/check_wifi.sh` to the end of the file. This will run the script every 10 minutes to check the local connection, and restarts wlan0 if it's down. Obviously, if the Pi keeps disconnecting, there's probably a bigger problem.
 
 ### Wiring and Physical Setup
 This should already be done (unless it's been unplugged and moved or something), but the Pi should be connected to a 3D print witht the DHT22 sensor on it as well. That print clips on a wire breakout box that plugs into the back of the glove box, which runs inside the box to the Sparkfun BME280 board (small red PCB) on its own 3D printed bracket.
