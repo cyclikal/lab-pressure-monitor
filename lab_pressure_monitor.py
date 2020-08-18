@@ -27,7 +27,7 @@ data_sheet = gc.open(SPREADSHEET_NAME).worksheet(SPREADSHEET_TAB)
 
 sensor_data.connect()
 
-while True:    
+while True:
     try:
         data_sheet.insert_row(sensor_data.get_data(), 2, value_input_option="USER_ENTERED")
     except:
@@ -40,4 +40,4 @@ while True:
         print(time.time() - start_time)
         start_time = time.time()
 
-        time.sleep(loop_frequency - time.time() % loop_frequency)
+        time.sleep(LOOP_FREQUENCY - time.time() % LOOP_FREQUENCY)
