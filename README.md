@@ -20,7 +20,7 @@ Finally, follow these steps for the code:
 
 ### Networking
 Since the goal of this project is to run headless (continuously) for months at a time, it will be useful to have a script in place to ping a local IP and ensure that there is a network connection. To do this, follow these steps:
-- Change the `GATEWAY` in `check_wifi.sh` to a local IP to ping (router maybe?) to check the WiFi connection
+- Change the `GATEWAY` in `check_wifi.sh` to a local IP to ping (router maybe?) to check the WiFi connection (10.128.128.128 works for UEL Tenant WiFi)
 - Do `sudo chmod +x check_wifi.sh` to make the script executable
 - Add to crontab with `crontab -e`, then add `*/10 * * * * sudo /home/pi/check_wifi.sh` to the end of the file. This will run the script every 10 minutes to check the local connection, and restarts wlan0 if it's down. Obviously, if the Pi keeps disconnecting, there's probably a bigger problem.
 
