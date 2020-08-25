@@ -5,7 +5,7 @@
 
 #!/bin/bash
 
-GATEWAY=127.0.0.1
+GATEWAY=10.10.1.2
 
 ping -c2 ${GATEWAY} > /dev/null
 
