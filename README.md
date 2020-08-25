@@ -41,3 +41,11 @@ For this to run, the Pi will use a Google service account to edit a spreadsheet.
 Go to [this link](https://console.developers.google.com/apis/credentials?authuser=0&project=lab-monitor-project&supportedpurview=project) with a Cyclikal account to access the credentials page, click on the **"lab-monitor-account"** service account, and generate a new key with "ADD KEY" -> "Create new key" -> JSON. Then move this file into the pi's home directory. _It should be named `service_account.json`._ Before doing anything else, verify that the email listed in `service_account.json` has been given edit access to the data spreadsheet. If not, just give it access as if you were doing it for a human user.
 
 Finally, set up `lab-pressure-monitor.py` to run on boot by **TODO: FINISH THIS**
+
+### BOM (Parts List)
+Here are the parts used. Links included for reordering if necessary:
+1. [BME280 Atmospheric Pressure + Temp + Humidity Sensor](https://www.digikey.com/products/en?keywords=1568-sen-15440-nd)
+1. [IR Pi Camera](https://www.digikey.com/products/en?keywords=1778-1218-ND)
+1. [DHT22 Temp + Humidity Sensor](https://www.digikey.com/products/en?keywords=1528-1504-nd)
+1. Generic microUSB 5V wall adapter (anywhere from 1 amp to 2.5 amps)
+1. Generic microSD card (anywhere from 4gb to 32gb)
